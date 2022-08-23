@@ -1,5 +1,5 @@
-# Mi primer Desafio de React JS
+# Tercer Desafio de React JS
 
-## Desafío: Crear la App utilizando el CLI
+## Desafío: Crea tu landing
 
 Autor: Matias Sanchez
