@@ -1,0 +1,11 @@
+.Greeting-div{
+    text-align: center;
+    margin-top: 50px;
+}
+.Greeting-div h1{
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+.Greeting-div h2{
+    font-size: 1em;
+}

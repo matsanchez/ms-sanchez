@@ -1,15 +1,17 @@
-import logo from './logoms.svg';
-import './App.css';
-import NavBar from './components/NavBar';
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+
 function App() {
+  const greeting = {
+    title: "Bienvenidos al Proyecto E-commerce en React JS",
+    subtitle: "Autor: Matias Sanchez",
+  };
   return (
-    <div className="App">
+    <>
       <NavBar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hola! Soy Matias Sanchez, próximamente te estare mostrando mis productos</p>
-      </header>
-    </div>
+      <ItemListContainer greeting={greeting} />
+    </>
   );
 }
 
