@@ -1,5 +1,5 @@
-# Tercer Desafio de React JS
+# Cuarto Desafio de React JS
 
-## Desafío: Crea tu landing
+## Desafío: Contador con botón
 
 Autor: Matias Sanchez

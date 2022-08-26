@@ -1,7 +1,3 @@
-.logoMenu{
-  width: 90px;
-}
-
 /* Aquí definimos las Custom properties */
 :root {
   --negro: #393939;
@@ -108,7 +104,6 @@ form, input, textarea, select, button, label {
           hyphens: auto;
   background-color: transparent;
   color: inherit;
-  display: block;
   /* opcional */
   -webkit-appearance: none;
      -moz-appearance: none;
