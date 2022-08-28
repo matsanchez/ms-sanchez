@@ -1,5 +1,6 @@
 .Card-container{
     margin: 10px;
+    text-align: center;
 }
 .Card-container:hover{
     -webkit-box-shadow: -1px 0px 16px 4px rgba(255,255,255,1);
@@ -8,4 +9,13 @@
 }
 .Card-content{
     background-color: #505253;
+}
+.Card-header{
+    background-color: #505253;
+    padding: 10px;
+    color: #a2a5a7;
+}
+.Product-stock{
+    padding: 5px;
+    background-color: #6c6f70;
 }
