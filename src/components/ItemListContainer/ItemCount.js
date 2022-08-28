@@ -9,13 +9,14 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   return (
     <div className="container-item-count">
       <div className="container-counter">
-        <p>Producto Numero 1</p>
         <div className="container-buttons">
           <RemoveCircleOutlineIcon
+            className="Icons-counter"
             onClick={() => (counter === 0 ? "" : setCounter(counter - 1))}
           />
-          <p>{counter}</p>
+          <p className="Icons-counter">{counter}</p>
           <AddCircleOutlineIcon
+            className="Icons-counter"
             onClick={() => (stock <= counter ? "" : setCounter(counter + 1))}
           />
         </div>

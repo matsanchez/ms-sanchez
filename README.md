@@ -1,5 +1,5 @@
-# Cuarto Desafio de React JS
+# Quinto Desafio de React JS
 
-## Desafío: Contador con botón
+## Desafío: Catálogo con MAPS y Promises
 
 Autor: Matias Sanchez
