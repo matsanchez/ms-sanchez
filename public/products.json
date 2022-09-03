@@ -1,0 +1,131 @@
+[
+
+    {
+
+        "id": 1,
+        "name": "Velador Nordico Escandinavo",
+        "price": 5500,
+        "stock": 10,
+        "pictureUrl": "./assets/products/pedestal-table/1.jpg",
+        "category": "veladores",
+        "description": "Velador de 3 patas de madera de eucalipto, con pantalla ecologica",
+        "sold": "1550",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 30,
+            "height": 60
+        }
+    },
+    {
+
+        "id": 2,
+        "name": "Velador Colgante",
+        "price": 2500,
+        "stock": 15,
+        "pictureUrl": "./assets/products/pedestal-table/2.jpg",
+        "category": "veladores",
+        "description": "Velador de madera colgante, con bombilla multifilamento de luz suave, y cable forrado para brindarle mas estetica",
+        "sold": "150",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width":10,
+            "height": 25
+        }
+    },
+    {
+
+        "id": 3,
+        "name": "Velador en C inclinado",
+        "price": 3500,
+        "stock": 25,
+        "pictureUrl": "./assets/products/pedestal-table/3.jpg",
+        "category": "veladores",
+        "description": "Velador de apoyo, en forma de C inclinado con madera laqueada y bombilla visible de multifilamento",
+        "sold": "150",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 15,
+            "height": 30
+        }
+    },
+    {
+
+        "id": 4,
+        "name": "Velador Minimalista",
+        "price": 1500,
+        "stock": 105,
+        "pictureUrl": "./assets/products/pedestal-table/4.jpg",
+        "category": "veladores",
+        "description": "Velador con forma minimalista, cuadrado pequeño con bombilla a la vista de multifilamento",
+        "sold": "550",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 10,
+            "height": 20
+        }
+    },
+    {
+
+        "id": 5,
+        "name": "Velador Recto en C",
+        "price": 3500,
+        "stock": 105,
+        "pictureUrl": "./assets/products/pedestal-table/5.jpg",
+        "category": "veladores",
+        "description": "Velador recto en forma de C, madera cruda con bombilla visible multifilamento",
+        "sold": "1550",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 25,
+            "height": 35
+        }
+    },
+    {
+
+        "id": 6,
+        "name": "Velador Rectangular",
+        "price": 4500,
+        "stock": 58,
+        "pictureUrl": "./assets/products/pedestal-table/6.jpg",
+        "category": "veladores",
+        "description": "Velador rectangular con base en madera y cemento, una combinacion de ambas logrando una armonia con la bombilla de multifilamento visible",
+        "sold": "1550",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 15,
+            "height": 40
+        }
+    },
+    {
+
+        "id": 7,
+        "name": "Velador Escondido",
+        "price": 5500,
+        "stock": 13,
+        "pictureUrl": "./assets/products/pedestal-table/7.jpg",
+        "category": "veladores",
+        "description": "Velador con base y contornos en cemento, y portafoco en madera con bombilla multifilamento visible",
+        "sold": "3550",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 20,
+            "height": 50
+        }
+    },
+    {
+
+        "id": 8,
+        "name": "Velador People",
+        "price": 5500,
+        "stock": 10,
+        "pictureUrl": "./assets/products/pedestal-table/8.jpg",
+        "category": "veladores",
+        "description": "Velador con estructura en madera con pantalla enfocando abajo",
+        "sold": "1550",
+        "trademark": "MS Carpinteria",
+        "measurement": {
+            "width": 30,
+            "height": 60
+        }
+    }
+]

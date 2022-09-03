@@ -1,5 +1,5 @@
-# Quinto Desafio de React JS
+# Sexto Desafio de React JS
 
-## Desafío: Catálogo con MAPS y Promises
+## Desafío: Detalle del Producto
 
 Autor: Matias Sanchez
