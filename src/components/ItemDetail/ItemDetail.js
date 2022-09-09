@@ -1,35 +1,41 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 import "./ItemDetail.css";
 
 const ItemDetail = ({ detail }) => {
   return (
-    <>
-      <div className="Card-wrapper">
-        <div className="Card-container-header">
-          <img
-            className="Card-img"
-            src={detail.image}
-            alt="Imagen de Internet"
-          />
-          <div className="Card-container-details">
-            <h2>{detail.name}</h2>
-            <h1>${detail.price}</h1>
-          </div>
+    <div className="detail-container">
+      <div className="details" key={detail.id}>
+        <div className="detail-img">
+          <img src={detail.pictureUrl} alt="" />
         </div>
-        <div className="Card-container-content">
-          <div className="Card-container-features">
-            <h3>CARACTERISTICAS GENERALES</h3>
-            <span>
-              <strong>CATEGORIA:</strong> {detail.category}
-            </span>
+        <div className="box">
+          <span>Vendidos: {detail.sold}</span>
+          <div className="row">
+            <h2>{detail.name}</h2>
+            <span>${detail.price}</span>
           </div>
-          <div className="Card-container-description">
-            <h3>DESCRIPCION DEL PRODUCTO</h3>
-            <span>{detail.description}</span>
+          <p>{detail.description}</p>
+          <div className="detail-expand">
+            <p>
+              <strong>Categoria:</strong> {detail.category}
+            </p>
+            <p>
+              <strong>Marca:</strong> {detail.trademark}
+            </p>
+            <p>
+              <strong>Medidas:</strong> Ancho-({detail.measurement.width}cm) /
+              Alto-(
+              {detail.measurement.height}cm)
+            </p>
+          </div>
+          <Button className="detail-btn-cart">Agregar al carrito</Button>
+          <div className="mt-3">
+            <span>Stock: {detail.stock} Disponible</span>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

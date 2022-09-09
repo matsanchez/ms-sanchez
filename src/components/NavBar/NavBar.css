@@ -1,60 +1,13 @@
-.Nav{
-    width:100%;
-    background-color: #282c34;
-    padding: 1em;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    color:#fff;
+.link:hover{
+  color: #fff;
 }
-.Nav-a{
-    color: #fff!important;
+.subLink:hover{
+  background-color: rgb(201, 201, 201);
 }
-.Nav-a:hover{
-    color: #2edf!important;
+.subLinkItem:hover{
+  color: #000;
 }
-.Nav-button{
-    display:none;
-    cursor: pointer;
-}
-.Nav-svg{
-    width:2em;
-    height:2em;
-    fill:#fff;
-}
-.Nav-ul{
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-}
-.Nav-li{
-    margin: 0 .5em;
-}
-@media screen and (max-width:480px){
-
-    .Nav-button{
-        display: flex;
-    }
-    .Nav-nav{
-        width:100%;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-        height:0vh;
-        opacity: 0;
-        overflow: hidden;
-        transition: all .5s ease;
-    }
-    .Nav-nav.isActive{
-        height:25vh;
-        opacity: 1;
-    }
-    .Nav-ul{
-        flex-direction: column;
-    }
-    .Nav-li{
-        margin: .5em 0;
-    }
+.logoNav{
+  background-color: #fff;
+  border-radius: 7px;
 }

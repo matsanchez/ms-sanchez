@@ -1,5 +1,5 @@
-# Sexto Desafio de React JS
+# Primera Entrega del Proyecto Final
 
-## Desafío: Detalle del Producto
+## Primera Entrega del Proyecto Final
 
 Autor: Matias Sanchez

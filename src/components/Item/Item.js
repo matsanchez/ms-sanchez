@@ -1,39 +1,25 @@
-import * as React from "react";
-import {
-  CardActionArea,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
-import ItemCount from "../ItemCount/ItemCount";
-import "./Item.css";
+import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Item = ({ data }) => {
-  const onAdd = (counter) => {
-    alert(`Se agregaron ${counter} productos al carrito`);
-  };
   return (
-    <Card className="Card-container" sx={{ maxWidth: 250 }}>
-      <div className="Card-header">
-        <p>Ver detalle del producto</p>
-      </div>
-      <CardActionArea>
-        <CardMedia component="img" image={data.pictureUrl} alt={data.name} />
-        <CardContent className="Card-content">
-          <Typography variant="h6" component="div" color="#fff">
-            {data.name}
-          </Typography>
-          <Typography variant="h7" color="#fff">
-            $ {data.price}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <ItemCount stock={5} initial={0} onAdd={onAdd} />
-      <div className="Product-stock">
-        <p>Stock Disponible: {data.stock} u.</p>
-      </div>
-    </Card>
+    <div className="m-1">
+      <Card key={data.id} style={{ width: "12.5rem" }}>
+        <Card.Img variant="top" src={data.pictureUrl} />
+        <Card.Body className="bg-light">
+          <Card.Header className="p-0 text-center">{data.name}</Card.Header>
+          <Link to={`/detail/${data.id}`}>
+            <Button
+              size="sm"
+              variant="outline-secondary"
+              className="mt-3 container"
+            >
+              Ver detalle
+            </Button>
+          </Link>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 
