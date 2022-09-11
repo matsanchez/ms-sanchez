@@ -19,52 +19,45 @@ const NavBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link>
-              <Link to="/" className="link">
-                Home
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/nosotros" className="link">
-                Nosotros
-              </Link>
-            </Nav.Link>
-            <NavDropdown title="Productos" id="collasible-nav-dropdown">
-              <NavDropdown.Item className="subLink">
+          <Nav>
+            <Link to="/" className="link">
+              Home
+            </Link>
+            <Link to="/nosotros" className="link">
+              Nosotros
+            </Link>
+            <NavDropdown
+              className="dropdown link-top"
+              title="Productos"
+              id="collasible-nav-dropdown"
+            >
+              <div className="subLink">
                 <Link to="/category/percheros" className="subLinkItem">
                   Percheros
                 </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="subLink">
                 <Link to="/category/macetas" className="subLinkItem">
                   Macetas
                 </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="subLink">
                 <Link to="/category/llaveros" className="subLinkItem">
                   Llaveros
                 </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="subLink">
                 <Link to="/category/mesa" className="subLinkItem">
                   Mesa de Luz
                 </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className="subLink">
                 <Link to="/category/veladores" className="subLinkItem">
                   Veladores
                 </Link>
-              </NavDropdown.Item>
+              </div>
             </NavDropdown>
-            <Nav.Link>
-              <Link to="/contacto" className="link">
-                Contacto
-              </Link>
-            </Nav.Link>
+            <Link to="/contacto" className="link">
+              Contacto
+            </Link>
           </Nav>
+          <div className="container-search">{/* <Search /> */}</div>
+          <div className="container-cartwidget">
+            <CartWidget />
+          </div>
         </Navbar.Collapse>
-        <CartWidget />
       </Container>
     </Navbar>
   );

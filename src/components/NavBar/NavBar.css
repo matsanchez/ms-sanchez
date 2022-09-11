@@ -1,13 +1,45 @@
 .link:hover{
   color: #fff;
 }
-.subLink:hover{
-  background-color: rgb(201, 201, 201);
+.subLink{
+  display: flex;
+  flex-flow: column;
+}
+.subLinkItem{
+  color: #000;
+  margin-left: 15px;
 }
 .subLinkItem:hover{
   color: #000;
+  background-color: rgb(201, 201, 201);
+  margin-left: 0;
+  padding: 5px;
 }
 .logoNav{
   background-color: #fff;
   border-radius: 7px;
+}
+.link-top{
+  margin-right: 10px;
+  margin-left: 0px;
+}
+.link{
+  margin-right: 15px;
+  color: grey;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 991px) {
+  .link-top{
+    margin-top: 10px;
+  }
+  .link{
+    margin-top: 15px;
+  }
+}
+.container-cartwidget{
+  margin-left: auto;
+}
+.container-search{
+  margin-left: auto;
 }

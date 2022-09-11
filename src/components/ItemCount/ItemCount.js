@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ItemCount.css";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-  const [counter, setCounter] = useState(initial);
-
+const ItemCount = ({ stock, onAdd, emptyCart, counter, setCounter }) => {
   return (
     <div className="container-item-count">
       <div className="container-counter">
+        <p>Cantidad:</p>
         <div className="container-buttons">
-          <RemoveCircleOutlineIcon
+          <IndeterminateCheckBoxIcon
             className="Icons-counter"
             onClick={() => (counter === 0 ? "" : setCounter(counter - 1))}
           />
           <p className="Icons-counter">{counter}</p>
-          <AddCircleOutlineIcon
+          <AddBoxIcon
             className="Icons-counter"
             onClick={() => (stock <= counter ? "" : setCounter(counter + 1))}
           />
         </div>
+        <div>
+          <span>Stock: {stock} Disponible</span>
+        </div>
+      </div>
+      <div>
         <button
-          className="button-add-cart"
-          onClick={() =>
-            counter === 0
-              ? alert("No hay productos para agregar")
-              : onAdd(counter)
-          }
+          className="detail-btn-cart"
+          onClick={() => (counter === 0 ? emptyCart() : onAdd(counter))}
         >
           Agregar al carrito
         </button>

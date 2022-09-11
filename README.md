@@ -1,5 +1,5 @@
-# Primera Entrega del Proyecto Final
+# Septimo Desafio React JS
 
-## Primera Entrega del Proyecto Final
+## Desafio: Sincronizar counter
 
 Autor: Matias Sanchez

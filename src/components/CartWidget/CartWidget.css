@@ -1,4 +1,9 @@
 .cart{
-    color: aliceblue;
-    margin-right: 5px;
+    color: #fff;
+}
+@media (max-width: 980px) {
+    .cart{
+        margin-top: 15px;
+    }
+    
 }

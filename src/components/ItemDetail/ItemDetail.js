@@ -1,8 +1,39 @@
-import React from "react";
-import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
+import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./ItemDetail.css";
 
 const ItemDetail = ({ detail }) => {
+  const [counter, setCounter] = useState(0);
+  const [btnOptions, setBtnOptions] = useState(true);
+
+  const emptyCart = () => {
+    toast.error(`Ingrese la cantidad por favor!`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const onAdd = (counter) => {
+    setBtnOptions(false);
+    toast.success(`Agregaste ${counter} ${detail.name}`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
     <div className="detail-container">
       <div className="details" key={detail.id}>
@@ -29,11 +60,26 @@ const ItemDetail = ({ detail }) => {
               {detail.measurement.height}cm)
             </p>
           </div>
-          <Button className="detail-btn-cart">Agregar al carrito</Button>
-          <div className="mt-3">
-            <span>Stock: {detail.stock} Disponible</span>
-          </div>
+          {btnOptions ? (
+            <ItemCount
+              stock={detail.stock}
+              counter={counter}
+              setCounter={setCounter}
+              onAdd={onAdd}
+              emptyCart={emptyCart}
+            />
+          ) : (
+            <>
+              <Link to="/">
+                <button className="btn-cart">Ver Catalogo</button>
+              </Link>
+              <Link to="/cart">
+                <button className="btn-cart">Finalizar Compra</button>
+              </Link>
+            </>
+          )}
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

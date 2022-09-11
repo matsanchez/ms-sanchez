@@ -419,3 +419,9 @@ export const getItemDetail = (idItem) => {
     resolve(products.find((prod) => prod.id === idItem));
   });
 };
+
+export const search = (input) => {
+  return new Promise((resolve, reject) => {
+    resolve(products.filter((prod) => prod.category === input));
+  });
+};
