@@ -3,7 +3,7 @@ import "./ItemCount.css";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 
-const ItemCount = ({ stock, onAdd, emptyCart, counter, setCounter }) => {
+const ItemCount = ({ stock, onAdd, emptyCart, count, setCount }) => {
   return (
     <div className="container-item-count">
       <div className="container-counter">
@@ -11,12 +11,12 @@ const ItemCount = ({ stock, onAdd, emptyCart, counter, setCounter }) => {
         <div className="container-buttons">
           <IndeterminateCheckBoxIcon
             className="Icons-counter"
-            onClick={() => (counter === 0 ? "" : setCounter(counter - 1))}
+            onClick={() => (count === 0 ? "" : setCount(count - 1))}
           />
-          <p className="Icons-counter">{counter}</p>
+          <p className="Icons-counter">{count}</p>
           <AddBoxIcon
             className="Icons-counter"
-            onClick={() => (stock <= counter ? "" : setCounter(counter + 1))}
+            onClick={() => (stock <= count ? "" : setCount(count + 1))}
           />
         </div>
         <div>
@@ -26,7 +26,7 @@ const ItemCount = ({ stock, onAdd, emptyCart, counter, setCounter }) => {
       <div>
         <button
           className="detail-btn-cart"
-          onClick={() => (counter === 0 ? emptyCart() : onAdd(counter))}
+          onClick={() => (count === 0 ? emptyCart() : onAdd(count))}
         >
           Agregar al carrito
         </button>

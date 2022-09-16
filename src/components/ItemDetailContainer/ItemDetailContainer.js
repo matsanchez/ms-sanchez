@@ -16,9 +16,7 @@ const ItemDetailContainer = () => {
       setLoading(false);
     }, 1000);
   }, [idItem]);
-  return (
-    <div>{loading ? <Loading /> : <ItemDetail detail={prodDetail} />};</div>
-  );
+  return <div>{loading ? <Loading /> : <ItemDetail item={prodDetail} />};</div>;
 };
 
 export default ItemDetailContainer;

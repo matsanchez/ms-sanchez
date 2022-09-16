@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ItemDetail.css";
+import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = ({ detail }) => {
-  const [counter, setCounter] = useState(0);
+const ItemDetail = ({ item }) => {
+  const {
+    id,
+    name,
+    price,
+    pictureUrl,
+    stock,
+    sold,
+    description,
+    measurement,
+    trademark,
+    category,
+  } = item;
+  const [count, setCount] = useState(0);
   const [btnOptions, setBtnOptions] = useState(true);
+  const { addItem } = useContext(CartContext);
 
   const emptyCart = () => {
     toast.error(`Ingrese la cantidad por favor!`, {
@@ -21,9 +35,10 @@ const ItemDetail = ({ detail }) => {
     });
   };
 
-  const onAdd = (counter) => {
+  const onAdd = (count) => {
     setBtnOptions(false);
-    toast.success(`Agregaste ${counter} ${detail.name}`, {
+    addItem({ ...item }, count);
+    toast.success(`Agregaste ${count} ${name}`, {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -36,35 +51,34 @@ const ItemDetail = ({ detail }) => {
 
   return (
     <div className="detail-container">
-      <div className="details" key={detail.id}>
+      <div className="details" key={id}>
         <div className="detail-img">
-          <img src={detail.pictureUrl} alt="" />
+          <img src={pictureUrl} alt="" />
         </div>
         <div className="box">
-          <span>Vendidos: {detail.sold}</span>
+          <span>Vendidos: {sold}</span>
           <div className="row">
-            <h2>{detail.name}</h2>
-            <span>${detail.price}</span>
+            <h2>{name}</h2>
+            <span>${price}</span>
           </div>
-          <p>{detail.description}</p>
+          <p>{description}</p>
           <div className="detail-expand">
             <p>
-              <strong>Categoria:</strong> {detail.category}
+              <strong>Categoria:</strong> {category}
             </p>
             <p>
-              <strong>Marca:</strong> {detail.trademark}
+              <strong>Marca:</strong> {trademark}
             </p>
             <p>
-              <strong>Medidas:</strong> Ancho-({detail.measurement.width}cm) /
-              Alto-(
-              {detail.measurement.height}cm)
+              <strong>Medidas:</strong> Ancho-({measurement.width}cm) / Alto-(
+              {measurement.height}cm)
             </p>
           </div>
           {btnOptions ? (
             <ItemCount
-              stock={detail.stock}
-              counter={counter}
-              setCounter={setCounter}
+              stock={stock}
+              count={count}
+              setCount={setCount}
               onAdd={onAdd}
               emptyCart={emptyCart}
             />
@@ -74,7 +88,7 @@ const ItemDetail = ({ detail }) => {
                 <button className="btn-cart">Ver Catalogo</button>
               </Link>
               <Link to="/cart">
-                <button className="btn-cart">Finalizar Compra</button>
+                <button className="btn-cart">Ir al carrito</button>
               </Link>
             </>
           )}

@@ -1,4 +1,5 @@
 .cart{
+    display: flex;
     color: #fff;
 }
 @media (max-width: 980px) {

@@ -1,5 +1,5 @@
-# Septimo Desafio React JS
+# Octavo Desafio React JS
 
-## Desafio: Sincronizar counter
+## Desafio: CartContext
 
 Autor: Matias Sanchez

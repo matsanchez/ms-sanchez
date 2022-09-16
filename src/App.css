@@ -18,5 +18,6 @@ body {
     rgba(45, 20,44,1) 100%
   );
   min-height: 100vh;
-
+  position: relative;
+  padding-bottom: 7rem;
 }

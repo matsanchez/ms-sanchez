@@ -1,0 +1,20 @@
+.container-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.logo-footer{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo-footer img{
+    margin-top: 20px;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+.logo-footer p{
+    margin-top: 10px;
+    color: #FFF;
+}
