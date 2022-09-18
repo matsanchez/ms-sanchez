@@ -8,11 +8,12 @@ import { CartProvider } from "../src/context/CartContext";
 import NavBar from "./components/NavBar/NavBar";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemListCategory from "./components/ItemListCategory/ItemListCategory";
+import About from "./components/About/About";
+import Cart from "./components/Cart/Cart";
 import Footer from "./components/Footer/Footer";
 //VIEWS
-import Nosotros from "./views/nosotros";
 import Contacto from "./views/contacto";
-import Cart from "./views/cart";
 
 const App = () => {
   return (
@@ -21,8 +22,9 @@ const App = () => {
         <CartProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/allproducts" element={<ItemListContainer />} />
+            <Route path="/" element={<ItemListCategory />} />
+            <Route path="/nosotros" element={<About />} />
             <Route
               path="/category/:idCategory"
               element={<ItemListContainer />}

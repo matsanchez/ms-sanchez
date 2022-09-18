@@ -1,6 +1,7 @@
 .cart{
     display: flex;
     color: #fff;
+    align-items: center;
 }
 @media (max-width: 980px) {
     .cart{

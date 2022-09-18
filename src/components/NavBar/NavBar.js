@@ -1,23 +1,27 @@
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import CartWidget from "../CartWidget/CartWidget";
 import Logo from "./logo.png";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { Avatar } from "@mui/material";
 
 const NavBar = () => {
+  const { cart } = useContext(CartContext);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Brand>
           <Link to="/">
-            <img
+            <Avatar
               src={Logo}
-              alt="logo"
-              className="md:cursor-pointer h-9 logoNav"
+              variant="rounded"
+              sx={{ width: 56, height: 56 }}
             />
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <Link to="/" className="link">
@@ -53,11 +57,17 @@ const NavBar = () => {
               Contacto
             </Link>
           </Nav>
-          <div className="container-search">{/* <Search /> */}</div>
-          <div className="container-cartwidget">
-            <CartWidget />
-          </div>
         </Navbar.Collapse>
+        <Navbar.Brand>
+          <div className="container-search"></div>
+          {cart.length === 0 ? null : (
+            <div className="container-cartwidget">
+              <Link to="/cart">
+                <CartWidget />
+              </Link>
+            </div>
+          )}
+        </Navbar.Brand>
       </Container>
     </Navbar>
   );

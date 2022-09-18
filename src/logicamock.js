@@ -402,9 +402,54 @@ const products = [
   },
 ];
 
+const viewCategory = [
+  {
+    url: null,
+    title: "elija una categoria o haga clic aqui para ver todos los productos",
+    width: "99%",
+    to: "/allproducts",
+  },
+  {
+    url: "/assets/products/veladores/1.jpg",
+    title: "veladores",
+    width: "25%",
+    to: "/category/veladores",
+  },
+  {
+    url: "/assets/products/macetas/2.jpg",
+    title: "macetas",
+    width: "24%",
+    to: "/category/macetas",
+  },
+  {
+    url: "/assets/products/percheros/3.jpg",
+    title: "percheros",
+    width: "24%",
+    to: "/category/percheros",
+  },
+  {
+    url: "/assets/products/mesa/4.jpg",
+    title: "mesa de luz",
+    width: "25%",
+    to: "/category/mesa",
+  },
+  {
+    url: "/assets/products/llaveros/1.jpg",
+    title: "llaveros",
+    width: "25%",
+    to: "/category/llaveros",
+  },
+];
+
 export const getData = () => {
   return new Promise((resolve, reject) => {
     resolve(products);
+  });
+};
+
+export const showCategory = (idCategory) => {
+  return new Promise((resolve, reject) => {
+    resolve(viewCategory.filter((prod) => prod.category === idCategory));
   });
 };
 

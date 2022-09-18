@@ -1,5 +1,5 @@
-# Octavo Desafio React JS
+# Noveno Desafio React JS
 
-## Desafio: CartContext
+## Desafio: Cart View
 
 Autor: Matias Sanchez

@@ -15,19 +15,17 @@
   margin-left: 0;
   padding: 5px;
 }
-.logoNav{
-  background-color: #fff;
-  border-radius: 7px;
-}
 .link-top{
   margin-right: 10px;
   margin-left: 0px;
+  font-size: 1.2rem;
 }
 .link{
   margin-right: 15px;
   color: grey;
   display: flex;
   align-items: center;
+  font-size: 1.2rem;
 }
 @media (max-width: 991px) {
   .link-top{
