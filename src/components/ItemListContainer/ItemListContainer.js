@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import { getData, getCategory } from "../../logicamock";
+import { getAllProducts } from "../../Firebase/LogicApi";
 
 const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
@@ -10,19 +10,13 @@ const ItemListContainer = () => {
   const { idCategory } = useParams();
 
   useEffect(() => {
-    setLoading(true);
-
-    if (!idCategory) {
-      setTimeout(() => {
-        getData().then((prod) => setProducts(prod));
-        setLoading(false);
-      }, 2000);
-    } else {
-      setTimeout(() => {
-        getCategory(idCategory).then((prod) => setProducts(prod));
-        setLoading(false);
-      }, 2000);
-    }
+    const getProducts = async () => {
+      setLoading(true);
+      const allProducts = await getAllProducts(idCategory);
+      setProducts(allProducts);
+      setLoading(false);
+    };
+    getProducts();
   }, [idCategory]);
 
   return (

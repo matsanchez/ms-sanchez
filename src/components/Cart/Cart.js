@@ -8,7 +8,7 @@ const Cart = () => {
   const { cart, totalPriceCart, cartClear } = useContext(CartContext);
 
   return (
-    <Container className="mt-3 bg-dark rounded-4 p-5 shadow">
+    <Container className="mt-3 bg-dark rounded-4 p-5 shadow text-center">
       {cart.length === 0 ? (
         <CartEmpty />
       ) : (

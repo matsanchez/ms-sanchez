@@ -3,18 +3,20 @@ import Box from "@mui/material/Box";
 import Loading from "../Loading/Loading";
 import ItemCategory from "./ItemCategory";
 import { useEffect, useState } from "react";
-import { showCategory } from "../../logicamock";
+import { getShowCategory } from "../../Firebase/LogicApi";
 
 const ItemListCategory = () => {
   const [loading, setLoading] = useState(true);
   const [cardCategory, setCardCategory] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      showCategory().then((prod) => setCardCategory(prod));
+    const getCategory = async () => {
+      setLoading(true);
+      const allCategory = await getShowCategory();
+      setCardCategory(allCategory);
       setLoading(false);
-    }, 300);
+    };
+    getCategory();
   }, []);
 
   return (
@@ -32,7 +34,7 @@ const ItemListCategory = () => {
           }}
         >
           {cardCategory.map((_category) => {
-            return <ItemCategory key={_category.title} category={_category} />;
+            return <ItemCategory key={_category.id} category={_category} />;
           })}
         </Box>
       )}

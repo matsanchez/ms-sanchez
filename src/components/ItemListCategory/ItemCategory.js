@@ -75,10 +75,10 @@ const ItemCategory = ({ category }) => {
       focusRipple
       style={{
         width: category.width,
-        margin: 3,
+        margin: 9.5,
       }}
     >
-      <ImageSrc style={{ backgroundImage: `url(${category.url})` }} />
+      <ImageSrc style={{ backgroundImage: `url(${category.backgroundUrl})` }} />
       <ImageBackdrop className="MuiImageBackdrop-root" />
       <Link to={category.to}>
         <Image>
@@ -93,7 +93,7 @@ const ItemCategory = ({ category }) => {
               pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
             }}
           >
-            {category.title.toUpperCase()}
+            {category.label.toUpperCase()}
             <ImageMarked className="MuiImageMarked-root" />
           </Typography>
         </Image>

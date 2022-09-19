@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const CartEmpty = () => {
   return (
-    <div className="text-center">
+    <>
       <ProductionQuantityLimitsIcon sx={{ color: red[500], fontSize: 200 }} />
       <Typography variant="h5" className="text-light mt-3">
         No hay productos en el carrito
@@ -16,7 +16,7 @@ const CartEmpty = () => {
           Ver productos
         </Button>
       </Link>
-    </div>
+    </>
   );
 };
 

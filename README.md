@@ -1,5 +1,5 @@
-# Noveno Desafio React JS
+# Decimo Desafio React JS
 
-## Desafio: Cart View
+## Desafio: Item Collection
 
 Autor: Matias Sanchez

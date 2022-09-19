@@ -22,7 +22,7 @@ const CartWidget = () => {
           badgeContent={
             <Avatar
               sx={{
-                bgcolor: pink[500],
+                bgcolor: pink[800],
                 width: 20,
                 height: 20,
                 padding: 1.5,

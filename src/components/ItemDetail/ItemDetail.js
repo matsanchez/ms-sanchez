@@ -5,20 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ItemDetail.css";
 import { CartContext } from "../../context/CartContext";
+import CustomizedBreadcrumbs from "../NavBar/Breadcrumbs";
+import ItemModal from "./ItemModal";
 
 const ItemDetail = ({ item }) => {
-  const {
-    id,
-    name,
-    price,
-    pictureUrl,
-    stock,
-    sold,
-    description,
-    measurement,
-    trademark,
-    category,
-  } = item;
+  const { id, name, price, stock, sold, description, measurement, trademark, category } =
+    item;
   const [count, setCount] = useState(0);
   const [btnOptions, setBtnOptions] = useState(true);
   const { addItem } = useContext(CartContext);
@@ -26,7 +18,7 @@ const ItemDetail = ({ item }) => {
   const emptyCart = () => {
     toast.error(`Ingrese la cantidad por favor!`, {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
@@ -40,7 +32,7 @@ const ItemDetail = ({ item }) => {
     addItem({ ...item }, count);
     toast.success(`Agregaste ${count} ${name}`, {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
@@ -51,9 +43,10 @@ const ItemDetail = ({ item }) => {
 
   return (
     <div className="detail-container">
+      <CustomizedBreadcrumbs navigation={item} />
       <div className="details" key={id}>
         <div className="detail-img">
-          <img src={pictureUrl} alt="" />
+          <ItemModal item={item} />
         </div>
         <div className="box">
           <span>Vendidos: {sold}</span>
