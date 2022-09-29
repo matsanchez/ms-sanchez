@@ -1,10 +1,8 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
+import { Badge, Avatar, Stack } from "@mui/material/";
+import { pink } from "@mui/material/colors";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { pink } from "@mui/material/colors";
 
 const CartWidget = () => {
   const { cart } = useContext(CartContext);
@@ -20,22 +18,22 @@ const CartWidget = () => {
           overlap="circular"
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
           badgeContent={
-            <Avatar
-              sx={{
-                bgcolor: pink[800],
-                width: 20,
-                height: 20,
-                padding: 1.5,
-                fontSize: 15,
-              }}
-            >
-              <p>{itemsInCart}</p>
-            </Avatar>
+            !cart.length ? null : (
+              <Avatar
+                sx={{
+                  bgcolor: pink[800],
+                  width: 20,
+                  height: 20,
+                  padding: 1.5,
+                  fontSize: 15,
+                }}
+              >
+                <p>{itemsInCart}</p>
+              </Avatar>
+            )
           }
         >
-          <Avatar sx={{ bgcolor: pink[500], width: 50, height: 50 }}>
-            <ShoppingCartIcon fontSize="large" />
-          </Avatar>
+          <ShoppingCartIcon fontSize="large" />
         </Badge>
       </Stack>
     </div>

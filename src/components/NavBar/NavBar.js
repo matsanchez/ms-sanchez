@@ -1,76 +1,318 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import CartWidget from "../CartWidget/CartWidget";
+import React from "react";
+import { AppBar, Box, Toolbar, Typography, Menu, Container, Button, MenuItem, Avatar } from "@mui/material/";
+import NavBarMobile from "./NavBarMobile";
 import Logo from "./logo.png";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
-import { Avatar } from "@mui/material";
+import CartWidget from "../CartWidget/CartWidget";
+
+const menuLinks = [
+  {
+    link: "Home",
+    to: "/",
+    sublinks: false,
+  },
+  {
+    link: "Nosotros",
+    to: "/nosotros",
+    sublinks: false,
+  },
+  {
+    link: "Productos",
+    sublinks: true,
+    subMenu: [
+      {
+        link: "Veladores",
+        to: "/category/veladores",
+      },
+      {
+        link: "Macetas",
+        to: "/category/macetas",
+      },
+      {
+        link: "Mesa de Luz",
+        to: "/category/mesa",
+      },
+      {
+        link: "Percheros",
+        to: "/category/percheros",
+      },
+      {
+        link: "Llaveros",
+        to: "/category/llaveros",
+      },
+    ],
+  },
+  {
+    link: "Contacto",
+    to: "/contacto",
+    sublinks: false,
+  },
+];
 
 const NavBar = () => {
-  const { cart } = useContext(CartContext);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Brand>
+    <AppBar position="static" className="bg-dark">
+      <Container maxWidth="xl" className="mt-1 mb-1">
+        <Toolbar disableGutters>
           <Link to="/">
             <Avatar
               src={Logo}
               variant="rounded"
-              sx={{ width: 56, height: 56 }}
+              sx={{ width: 56, height: 56, mr: 2, display: { xs: "none", md: "flex" } }}
             />
           </Link>
-        </Navbar.Brand>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav>
-            <Link to="/" className="link">
-              Home
-            </Link>
-            <Link to="/nosotros" className="link">
-              Nosotros
-            </Link>
-            <NavDropdown
-              className="dropdown link-top"
-              title="Productos"
-              id="collasible-nav-dropdown"
-            >
-              <div className="subLink">
-                <Link to="/category/percheros" className="subLinkItem">
-                  Percheros
-                </Link>
-                <Link to="/category/macetas" className="subLinkItem">
-                  Macetas
-                </Link>
-                <Link to="/category/llaveros" className="subLinkItem">
-                  Llaveros
-                </Link>
-                <Link to="/category/mesa" className="subLinkItem">
-                  Mesa de Luz
-                </Link>
-                <Link to="/category/veladores" className="subLinkItem">
-                  Veladores
-                </Link>
-              </div>
-            </NavDropdown>
-            <Link to="/contacto" className="link">
-              Contacto
-            </Link>
-          </Nav>
-        </Navbar.Collapse>
-        <Navbar.Brand>
-          <div className="container-search"></div>
-          {cart.length === 0 ? null : (
-            <div className="container-cartwidget">
-              <Link to="/cart">
-                <CartWidget />
-              </Link>
-            </div>
-          )}
-        </Navbar.Brand>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <NavBarMobile menuLinks={menuLinks} />
+          </Box>
+          <Link to="/">
+            <Avatar
+              src={Logo}
+              variant="rounded"
+              sx={{
+                width: 56,
+                height: 56,
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+              }}
+            />
+          </Link>
+          <Typography
+            variant="h5"
+            noWrap
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            MsCarpinteria
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <>
+              {menuLinks.map((menu) =>
+                menu.sublinks === true ? (
+                  <Box key={menu.link}>
+                    <Button
+                      id="dropdownMenu"
+                      onClick={handleClick}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                    >
+                      Productos
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "dropdownMenu",
+                      }}
+                    >
+                      {menu.subMenu.map((sub) => (
+                        <Link to={sub.to} key={sub.link}>
+                          <MenuItem onClick={handleClose}>{sub.link}</MenuItem>
+                        </Link>
+                      ))}
+                    </Menu>
+                  </Box>
+                ) : (
+                  <Link to={menu.to} key={menu.link}>
+                    <Button sx={{ my: 2, color: "white", display: "block" }}>{menu.link}</Button>
+                  </Link>
+                )
+              )}
+            </>
+          </Box>
+          <Link to="/cart">
+            <CartWidget />
+          </Link>
+        </Toolbar>
       </Container>
-    </Navbar>
+    </AppBar>
   );
 };
-
 export default NavBar;
+
+/* import React from "react";
+import { AppBar, Box, Toolbar, Typography, Menu, Container, Button, MenuItem, Avatar } from "@mui/material/";
+import NavBarMobile from "./NavBarMobile";
+import Logo from "./logo.png";
+import { Link } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
+
+const menuLinks = [
+  {
+    link: "Home",
+    to: "/",
+    sublinks: false,
+  },
+  {
+    link: "Nosotros",
+    to: "/nosotros",
+    sublinks: false,
+  },
+  {
+    link: "Productos",
+    sublinks: true,
+    subMenu: [
+      {
+        link: "Veladores",
+        to: "/category/veladores",
+      },
+      {
+        link: "Macetas",
+        to: "/category/macetas",
+      },
+      {
+        link: "Mesa de Luz",
+        to: "/category/mesa",
+      },
+      {
+        link: "Percheros",
+        to: "/category/percheros",
+      },
+      {
+        link: "Llaveros",
+        to: "/category/llaveros",
+      },
+    ],
+  },
+  {
+    link: "Contacto",
+    to: "/contacto",
+    sublinks: false,
+  },
+];
+
+const NavBar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <AppBar position="static" className="bg-dark">
+      <Container maxWidth="xl" className="mt-1 mb-1">
+        <Toolbar disableGutters>
+          <Link to="/">
+            <Avatar
+              src={Logo}
+              variant="rounded"
+              sx={{ width: 56, height: 56, mr: 2, display: { xs: "none", md: "flex" } }}
+            />
+          </Link>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <NavBarMobile />
+          </Box>
+          <Link to="/">
+            <Avatar
+              src={Logo}
+              variant="rounded"
+              sx={{
+                width: 56,
+                height: 56,
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+              }}
+            />
+          </Link>
+          <Typography
+            variant="h5"
+            noWrap
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            MsCarpinteria
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <>
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                <Link to="/">Home</Link>
+              </Button>
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                <Link to="/nosotros">Nosotros</Link>
+              </Button>
+              <Button
+                id="dropdownMenu"
+                onClick={handleClick}
+                sx={{ my: 2, color: "white", display: "block" }}
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+              >
+                Productos
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "dropdownMenu",
+                }}
+              >
+                <MenuItem onClick={handleClose}>
+                  <Link to="/allproducts">VER TODOS</Link>
+                </MenuItem>
+
+                <MenuItem onClick={handleClose}>
+                  <Link to="/category/veladores">Veladores</Link>
+                </MenuItem>
+
+                <MenuItem onClick={handleClose}>
+                  <Link to="/category/macetas">Macetas</Link>
+                </MenuItem>
+
+                <MenuItem onClick={handleClose}>
+                  <Link to="/category/mesa">Mesa de Luz</Link>
+                </MenuItem>
+
+                <MenuItem onClick={handleClose}>
+                  <Link to="/category/percheros">Percheros</Link>
+                </MenuItem>
+
+                <MenuItem onClick={handleClose}>
+                  <Link to="/category/llaveros">Llaveros</Link>
+                </MenuItem>
+              </Menu>
+            </>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              <Link to="/contacto">Contacto</Link>
+            </Button>
+          </Box>
+          <Link to="/cart">
+            <CartWidget />
+          </Link>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
+export default NavBar; */

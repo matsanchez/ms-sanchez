@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams, useNavigate } from "react-router-dom";
-import { getProduct } from "../../Firebase/LogicApi";
+import { getProduct } from "../../firebase/LogicApi";
 
 const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);

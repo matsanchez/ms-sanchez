@@ -1,8 +1,16 @@
-import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+  addDoc,
+} from "firebase/firestore";
 import { db } from "./Init";
 
 export const getAllProducts = async (idCategory) => {
-  let refProductsCollection;
+  let refProductsCollection = [];
 
   if (idCategory) {
     refProductsCollection = query(
@@ -41,9 +49,7 @@ export const getProduct = async (idItem) => {
 };
 
 export const getShowCategory = async () => {
-  let refCategoryCollection;
-
-  refCategoryCollection = collection(db, "category");
+  let refCategoryCollection = collection(db, "category");
 
   try {
     const res = await getDocs(refCategoryCollection);
@@ -52,6 +58,16 @@ export const getShowCategory = async () => {
       id: cat.id,
     }));
     return category;
+  } catch (error) {
+    console.log("Disculpe ha ocurrido un error", error);
+  }
+};
+
+export const setOrder = async (order) => {
+  const refOrdersCollection = collection(db, "orders");
+  try {
+    const { id } = await addDoc(refOrdersCollection, order);
+    return id;
   } catch (error) {
     console.log("Disculpe ha ocurrido un error", error);
   }

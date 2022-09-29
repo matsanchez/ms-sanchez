@@ -7,6 +7,7 @@
   vertical-align: baseline;
   font-family: 'Open Sans', sans-serif;
   font-family: 'PT Sans', sans-serif;
+  text-decoration: none;
 }
 body {
   background: linear-gradient(
@@ -20,4 +21,7 @@ body {
   min-height: 100vh;
   position: relative;
   padding-bottom: 7rem;
+}
+a:hover{
+  color: grey;
 }

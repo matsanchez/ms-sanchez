@@ -1,17 +1,16 @@
 import React, { useState, useContext } from "react";
-import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ItemDetail.css";
 import { CartContext } from "../../context/CartContext";
+import ItemCount from "../ItemCount/ItemCount";
 import CustomizedBreadcrumbs from "../NavBar/Breadcrumbs";
 import ItemModal from "./ItemModal";
 
 const ItemDetail = ({ item }) => {
-  const { id, name, price, stock, sold, description, measurement, trademark, category } =
-    item;
-  const [count, setCount] = useState(0);
+  const { id, name, price, stock, sold, description, measurement, trademark, category } = item;
+  const [count, setCount] = useState(1);
   const [btnOptions, setBtnOptions] = useState(true);
   const { addItem } = useContext(CartContext);
 
@@ -68,13 +67,18 @@ const ItemDetail = ({ item }) => {
             </p>
           </div>
           {btnOptions ? (
-            <ItemCount
-              stock={stock}
-              count={count}
-              setCount={setCount}
-              onAdd={onAdd}
-              emptyCart={emptyCart}
-            />
+            <>
+              <div className="d-flex align-items-center">
+                <p>Cantidad:</p>
+                <ItemCount stock={stock} count={count} setCount={setCount} />
+                <span>Stock: {stock} Disponible</span>
+              </div>
+              <div>
+                <button className="detail-btn-cart" onClick={() => (count === 0 ? emptyCart() : onAdd(count))}>
+                  Agregar al carrito
+                </button>
+              </div>
+            </>
           ) : (
             <>
               <Link to="/">

@@ -1,9 +1,8 @@
 import React from "react";
 import ReportIcon from "@mui/icons-material/Report";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import { red } from "@mui/material/colors";
-import { Container } from "@mui/system";
 
 const page404 = () => {
   return (

@@ -3,9 +3,11 @@ import { Avatar, TableCell, TableRow } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { red } from "@mui/material/colors";
 import { CartContext } from "../../context/CartContext";
+import ItemCountCart from "../ItemCount/ItemCountCart";
 
 const CartListDetail = ({ item }) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItem, increaseItems } = useContext(CartContext);
+
   return (
     <TableRow className="media-querie-itemCart">
       <TableCell>
@@ -21,6 +23,9 @@ const CartListDetail = ({ item }) => {
       </TableCell>
       <TableCell>
         <p>${(item.price * item.quantity).toLocaleString()}</p>
+      </TableCell>
+      <TableCell>
+        <ItemCountCart item={item} increase={() => increaseItems(item)} />
       </TableCell>
       <TableCell>
         <button onClick={() => removeItem(item.id)}>

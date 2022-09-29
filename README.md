@@ -1,4 +1,4 @@
-# Decimo Desafio React JS
+# Onceavo Desafio React JS
 
 ## Desafio: Item Collection
 
