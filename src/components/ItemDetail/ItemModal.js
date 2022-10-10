@@ -1,7 +1,5 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import { IconButton } from "@mui/material";
+import { IconButton, Box, Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const styleModal = {
@@ -22,13 +20,8 @@ const ItemModal = ({ item }) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <img
-        src={item.pictureUrl}
-        alt={item.name}
-        onClick={handleOpen}
-        style={{ cursor: "zoom-in" }}
-      />
+    <Box>
+      <img src={item.pictureUrl} alt={item.name} onClick={handleOpen} style={{ cursor: "zoom-in" }} />
       <Modal open={open} onClose={handleClose}>
         <Box sx={styleModal}>
           <IconButton
@@ -43,17 +36,17 @@ const ItemModal = ({ item }) => {
           >
             <CloseIcon />
           </IconButton>
-          <div>
+          <Box>
             <img
               src={item.pictureUrl}
               alt={item.name}
               style={{ cursor: "zoom-out", margin: "auto" }}
               onClick={handleClose}
             />
-          </div>
+          </Box>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 };
 

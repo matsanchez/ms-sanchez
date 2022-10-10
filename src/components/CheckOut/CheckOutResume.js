@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const CheckOutResume = ({ cart, totalPriceCart }) => {
   return (
-    <div className="bg-light rounded-4 p-3 w-50 m-2">
+    <Box sx={{ width: { xs: "97%", md: "50%" } }} className="bg-light rounded-4 p-3 m-2">
       <Typography>Resumen de Productos</Typography>
       <Grid container columns={4}>
         {cart.map((item) => {
@@ -32,10 +32,12 @@ const CheckOutResume = ({ cart, totalPriceCart }) => {
           );
         })}
       </Grid>
-      <div>
-        <p className="h3 mt-1">Importe Total: ${totalPriceCart().toLocaleString()}</p>
-      </div>
-    </div>
+      <Box>
+        <Typography variant="h5" className="mt-1">
+          Importe Total: ${totalPriceCart().toLocaleString()}
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

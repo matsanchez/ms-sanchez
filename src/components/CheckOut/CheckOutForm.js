@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Button, TextField, InputAdornment, Typography, LinearProgress } from "@mui/material";
+import { Button, TextField, InputAdornment, Typography, LinearProgress, Box } from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import { useAuth } from "../../context/AuthContext";
+import { pink } from "@mui/material/colors";
 
 const validationSchema = yup.object({
-  name: yup.string("").min(4, "Debe contener minimo 4 caracteres").required("Campo Requerido"),
-  phone: yup.number().min(8, "Debe contener minimo 8 caracteres numericos").required("Campo Requerido"),
+  name: yup.string().min(4, "Debe contener minimo 4 caracteres").required("Campo Requerido"),
+  phone: yup.string().min(8, "Debe contener minimo 8 caracteres numericos").required("Campo Requerido"),
   email: yup.string().email("Ejemplo: email@email.com").required("Campo Requerido"),
 });
 
 const CheckOutForm = ({ cart, totalPriceCart, getOrderId }) => {
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
+
   const formik = useFormik({
-    initialValues: { email: "", phone: "", name: "" },
+    initialValues: { email: user.email, phone: "", name: "" },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       let order = {
@@ -30,7 +34,7 @@ const CheckOutForm = ({ cart, totalPriceCart, getOrderId }) => {
   });
 
   return (
-    <div className="bg-light rounded-4 p-3 w-50 m-2">
+    <Box sx={{ width: { xs: "97%", md: "50%" } }} className="bg-light rounded-4 p-3 m-2">
       <Typography>Complete los datos para Facturacion</Typography>
       <form onSubmit={formik.handleSubmit}>
         <TextField
@@ -89,14 +93,29 @@ const CheckOutForm = ({ cart, totalPriceCart, getOrderId }) => {
           }}
         />
         {loading === true ? (
-          <Button fullWidth color="success" variant="contained" type="submit" className="mt-2">
+          <Button
+            fullWidth
+            sx={{
+              bgcolor: pink[600],
+              "&:hover": { bgcolor: pink[800] },
+            }}
+            variant="contained"
+            type="submit"
+            className="mt-2"
+          >
             Finalizar Compra
           </Button>
         ) : (
-          <LinearProgress color="success" className="mt-2" />
+          <LinearProgress
+            color="secondary"
+            sx={{
+              bgcolor: pink[600],
+            }}
+            className="mt-2"
+          />
         )}
       </form>
-    </div>
+    </Box>
   );
 };
 

@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams, useNavigate } from "react-router-dom";
-import { getProduct } from "../../firebase/LogicApi";
+import { getProduct } from "../../firebase/LogicApp";
 
 const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ const ItemDetailContainer = () => {
     getProductDetail();
   }, [idItem, navigate]);
 
-  return <div>{loading ? <Loading /> : <ItemDetail item={prodDetail} />};</div>;
+  return <>{loading ? <Loading /> : <ItemDetail item={prodDetail} />};</>;
 };
 
 export default ItemDetailContainer;

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import { getAllProducts } from "../../firebase/LogicApi";
+import { getAllProducts } from "../../firebase/LogicApp";
+import { Box } from "@mui/material";
 
 const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ const ItemListContainer = () => {
 
   return (
     <>
-      <div>{loading ? <Loading /> : <ItemList products={products} />}</div>
+      <Box>{loading ? <Loading /> : <ItemList products={products} />}</Box>
     </>
   );
 };

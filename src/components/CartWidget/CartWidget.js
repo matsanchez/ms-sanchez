@@ -1,18 +1,17 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge, Avatar, Stack } from "@mui/material/";
+import { Badge, Avatar, Stack, Tooltip } from "@mui/material/";
 import { pink } from "@mui/material/colors";
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 const CartWidget = () => {
-  const { cart } = useContext(CartContext);
+  const { cart } = useCart();
   let itemsInCart = 0;
 
   cart.map((item) => {
     return (itemsInCart = itemsInCart + item.quantity);
   });
   return (
-    <div className="cart">
+    <>
       <Stack>
         <Badge
           overlap="circular"
@@ -33,10 +32,12 @@ const CartWidget = () => {
             )
           }
         >
-          <ShoppingCartIcon fontSize="large" />
+          <Tooltip title="Mi Carrito">
+            <ShoppingCartIcon fontSize="large" />
+          </Tooltip>
         </Badge>
       </Stack>
-    </div>
+    </>
   );
 };
 

@@ -1,14 +1,13 @@
-import React from "react";
-import "./ItemList.css";
 import Item from "../Item/Item";
+import { Box } from "@mui/material";
 
 const ItemList = ({ products }) => {
   return (
-    <div className="Cards-container">
+    <Box className="d-flex row justify-content-center m-3">
       {products.map((prod) => {
-        return <Item key={prod.id} data={prod} />;
+        return <Item key={prod.id} item={prod} />;
       })}
-    </div>
+    </Box>
   );
 };
 

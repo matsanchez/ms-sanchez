@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Loading from "../Loading/Loading";
 import ItemCategory from "./ItemCategory";
 import { useEffect, useState } from "react";
-import { getShowCategory } from "../../firebase/LogicApi";
+import { getShowCategory } from "../../firebase/LogicApp";
 
 const ItemListCategory = () => {
   const [loading, setLoading] = useState(true);
